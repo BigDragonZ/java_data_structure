@@ -6,7 +6,7 @@ package list;
  * @Date Create on 2020/6/8 22:29
  * @since version1.0 Copyright 2019 All Rights Reserved.
  */
-public class MyArrayMyList<T>  implements MyList<T> {
+public class MyArrayList<T>  implements MyList<T> {
     /**
      * 初始化容量
      */
@@ -19,13 +19,13 @@ public class MyArrayMyList<T>  implements MyList<T> {
     private Integer size;
     private T[] values;
 
-    public MyArrayMyList(Integer capatity) {
+    public MyArrayList(Integer capatity) {
         this.size = 0;
         this.values = (T[]) new Object[size];
     }
 
 
-    public MyArrayMyList() {
+    public MyArrayList() {
         this.size = 0;
         this.values = (T[]) new Object[INIT_CAPACITY];
     }

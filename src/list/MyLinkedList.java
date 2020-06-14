@@ -4,18 +4,18 @@ import java.util.LinkedList;
 
 /**
  * @author <a href="291640894@qq.com">BigDragon</a >
- * @ClassName:MyLinkedList Description: 单向链表形式的线性表的简单实现
+ * @ClassName:MyLinkedList Description: 单向链表形式的线性表的简单实现:节点里面只有下一个节点的数据
  * @Date Create on 2020/6/14 09:39
  * @since version1.0 Copyright 2019 All Rights Reserved.
  */
-public class MyLinkedMyList<T> implements MyList<T> {
+public class MyLinkedList<T> implements MyList<T> {
 
 
     private int size;
 
     private Node<T> first;
 
-    public MyLinkedMyList() {
+    public MyLinkedList() {
         size = 0;
     }
 
@@ -37,20 +37,19 @@ public class MyLinkedMyList<T> implements MyList<T> {
     }
 
 
-
     @Override
     public int indexOf(T t) {
-        if (t == null){
+        if (t == null) {
             Node<T> x = first;
-            for (int i = 0;i < size;i++){
+            for (int i = 0; i < size; i++) {
                 if (x.item == null) {
                     return i;
                 }
                 x = x.next;
             }
-        }else {
+        } else {
             Node<T> x = first;
-            for (int i = 0;i < size;i++){
+            for (int i = 0; i < size; i++) {
                 if (t.equals(x.item)) {
                     return i;
                 }
@@ -63,17 +62,24 @@ public class MyLinkedMyList<T> implements MyList<T> {
     @Override
     public boolean insert(int index, T t) {
         checkIndex(index);
-        if (index == 0){
-            Node<T> x = new Node<T>(t,first);
+        if (index == 0) {
+            Node<T> x = new Node<T>(t, first);
             first = x;
             size++;
             return true;
         }
-        if (index == size){
-            Node<T> last = node(size-1);
+        if (index == size) {
 
-
+            Node<T> last = node(size - 1);
+            Node<T> x = new Node<>(t, null);
+            last.next = x;
+            size++;
+            return true;
         }
+        Node<T> node = node(index - 1);
+        Node<T> x = new Node<>(t, node.next);
+        node.next = x;
+        size++;
         return false;
     }
 
@@ -114,10 +120,10 @@ public class MyLinkedMyList<T> implements MyList<T> {
 
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
-        list.add(1);
-        list.add(2);
+        list.add(0, 0);
         System.out.println(list);
         System.out.println(list.get(0));
+        System.out.println(list.get(1));
 
     }
 }
